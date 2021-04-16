@@ -53,7 +53,7 @@ class Dataset(torch.utils.data.Dataset):
             imdb = pickle_read(os.path.join(cache_folder, 'imdb.pkl'))
 
         else:
-
+            print("here")
             # cycle through each dataset
             for dbind, db in enumerate(conf.datasets_train):
 
@@ -577,7 +577,6 @@ def balance_samples(conf, imdb):
                 valid_inds.append(imind)
             else:
                 empty_inds.append(imind)
-
         if not (conf.fg_image_ratio == 2):
             fg_weight = len(imdb) * conf.fg_image_ratio / len(valid_inds)
             bg_weight = len(imdb) * (1 - conf.fg_image_ratio) / len(empty_inds)
